@@ -1,0 +1,70 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Search Documentation",
+        "version": "1.0.0",
+        "description": "",
+        "contact": {
+            "name": "Developer",
+            "email": "gabriel.alves9400@hotmail.com"
+        }
+    },
+    "paths": {
+        "/search": {
+            "get": {
+                "summary": "Search Google",
+                "description": "Faz uma busca no Google baseado no parâmetro pesquisado",
+                "operationId": "search",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "Campo referencia ao que será buscado no google",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
